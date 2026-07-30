@@ -1,0 +1,8 @@
+---
+layout: null
+---
+User-Agent: *
+Allow: /
+Disallow: /pages/
+
+Sitemap: {{ "/sitemap.xml" | absolute_url }}

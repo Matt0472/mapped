@@ -1,0 +1,14 @@
+<footer class="section footer">
+	<div class="container">
+		<div>
+			<h2 class="title footer-title"><span class="footer-title-icon" aria-hidden="true"></span>Let's connect</h2>
+			<p class="footer-lead">Got a project in mind, or just want to say hi? Let's talk.</p>
+			<ul class="pill-list">
+				{%- for link in site.data.contact %}
+				<li>{% include contact-card.html link=link %}</li>
+				{%- endfor %}
+			</ul>
+		</div>
+		<p class="footer-copy">Copyright &copy; <strong>{{ site.author.name }}</strong></p>
+	</div>
+</footer>

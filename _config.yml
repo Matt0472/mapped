@@ -1,0 +1,60 @@
+# Site (Mattia Pedone)
+title: "MAPPED"   # wordmark: MAPED (MAttia PEDone) + una P → "MAPPED"
+description: "Hi, my name is Mattia Pedone. I'm a Full-Stack web developer and this is my personal website!"
+url: "https://matt0472.github.io"                         # TODO: dominio custom (da configurare alla fine)
+lang: en
+logo: "/assets/images/favicon.svg"
+author:
+  name: "Mattia Pedone"
+  title: "Full-Stack Web Developer"
+  tagline: "Full-Stack Web Developer · Traveler · Dreamer · Dad"
+  email: "mattia.pedone@protonmail.com"
+
+permalink: /blog/:slug/
+
+# Separator placed between the page title and the site title in the <title> tag
+title_separator: " — "
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+# Projects each get their own presentation page; an explicit permalink is
+# required so they don't inherit the global /blog/:slug/ posts namespace.
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Default front matter
+#
+# This block declares the standard front-matter contract for each content
+# type. Values here are FALLBACKS — a document that omits a field inherits the
+# value below, while one that sets it explicitly wins. Jekyll does not enforce
+# required fields, so the "Required" / "Optional" lists below are the
+# documented standard; the `values` keys are only the fields that have a safe
+# default.
+defaults:
+  # ── Posts (_posts/*.md) ───────────────────────────────────────────────
+  # Required: title, date
+  # Optional: subtitle, description, last_modified_at, read_time,
+  #           author (falls back to site.author.name), tags[], tag_names[],
+  #           header.teaser, header.image
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  # ── Projects (_projects/*.md) ─────────────────────────────────────────
+  # Required: title, description, category, status
+  # Optional: logo, banner, brand_color (falls back to var(--color-primary)),
+  #           external_url, repo_url
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+      featured: false    # surfaced in the homepage "featured" section when true
+      show_title: true   # set false to hide the title (e.g. when the logo is the wordmark)

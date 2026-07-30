@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{%- assign host = page.external_url | default: page.url | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' | first -%}
+<article class="article project-page" style="--brand: {{ page.brand_color | default: 'var(--color-primary)' }}">
+	<header class="project-page-hero">
+		<div class="pwin">
+			<div class="pcard-bar">
+				<span class="pcard-dot" style="background:#ff5f56"></span>
+				<span class="pcard-dot" style="background:#ffbd2e"></span>
+				<span class="pcard-dot" style="background:#27c93f"></span>
+				<span class="pcard-addr">{{ host }}</span>
+			</div>
+			<div class="pwin-view{% unless page.screenshot %} pwin-view--brand{% endunless %}"
+				{%- unless page.screenshot %}{% if page.banner %} style="background-image: linear-gradient(135deg, color-mix(in srgb, var(--brand) 85%, transparent), color-mix(in srgb, var(--brand) 60%, transparent)), url('{{ page.banner }}')"{% endif %}{% endunless %}>
+				{%- if page.screenshot %}<img src="{{ page.screenshot | relative_url }}" alt="{{ page.title }} screenshot">
+				{%- elsif page.logo %}<img class="pwin-logo" src="{{ page.logo }}" alt="{{ page.title }}">{% endif %}
+				{%- if page.badge %}<span class="pcard-badge">{{ page.badge }}</span>{% elsif page.status == 'planned' %}<span class="pcard-badge">coming soon</span>{% endif %}
+			</div>
+		</div>
+
+		<div class="pwin-meta">
+			{% if page.show_title != false %}<h1 class="title project-hero-title">{{ page.title }}</h1>{% endif %}
+			{% if page.category or page.status %}
+			<p class="project-meta">
+				{% if page.category %}<span class="project-category">{{ page.category }}</span>{% endif %}
+				{% if page.status %}<span class="project-status is-{{ page.status }}">{{ page.status }}</span>{% endif %}
+			</p>
+			{% endif %}
+			{% if page.description %}<p class="project-hero-descr">{{ page.description }}</p>{% endif %}
+			{% if page.collaborator_name %}<p class="pcard-collab">in collaboration with <a href="{{ page.collaborator_url }}" target="_blank" rel="noopener">{{ page.collaborator_name }} &uarr;</a></p>{% endif %}
+			<div class="project-hero-actions">
+				{% if page.external_url %}<a class="pill is-brand" href="{{ page.external_url }}" target="_blank" rel="noopener">Visit site ↗</a>{% endif %}
+				{% if page.repo_url %}<a class="pill is-ghost" href="{{ page.repo_url }}" target="_blank" rel="noopener">Source ↗</a>{% endif %}
+			</div>
+		</div>
+	</header>
+	<div class="content article-body">{{ content }}</div>
+	<p class="article-back"><a href="{{ '/projects' | relative_url }}">← All projects</a></p>
+</article>

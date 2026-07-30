@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+{% include head.html %}
+<body class="layout-{{ page.layout }}">
+	<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch light / dark theme"></button>
+	{%- assign header_size = 'large' -%}
+	{%- if page.layout == 'post' or page.layout == 'project' -%}{%- assign header_size = 'small' -%}{%- endif -%}
+	{% include header.html size=header_size %}
+	<main class="section container">
+		{{ content }}
+	</main>
+	{% include footer.html %}
+
+	<script>
+	(function () {
+		var root = document.documentElement;
+		var btn = document.getElementById('theme-toggle');
+		var mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+		// Effective theme = explicit choice if set, otherwise the OS preference.
+		function effective() {
+			var forced = root.getAttribute('data-theme');
+			if (forced === 'dark' || forced === 'light') return forced;
+			return mql.matches ? 'dark' : 'light';
+		}
+
+		// Show the icon of the CURRENT theme (sun in light, moon in dark).
+		function render() {
+			btn.textContent = effective() === 'dark' ? '🌙' : '☀️';
+		}
+
+		btn.addEventListener('click', function () {
+			var next = effective() === 'dark' ? 'light' : 'dark';
+			root.setAttribute('data-theme', next);
+			try { localStorage.setItem('theme', next); } catch (e) {}
+			render();
+		});
+
+		// Follow the OS in real time as long as the user hasn't forced a choice.
+		mql.addEventListener('change', function () {
+			try { if (!localStorage.getItem('theme')) render(); } catch (e) { render(); }
+		});
+
+		render();
+	})();
+	</script>
+</body>
+</html>

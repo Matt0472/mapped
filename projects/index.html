@@ -1,0 +1,16 @@
+---
+layout: default
+title: "Projects"
+---
+<section>
+	<h1 class="title">Projects</h1>
+	{%- comment %}Order explicitly via the `order` front-matter field (lower first).{% endcomment %}
+	{%- assign projects = site.projects | sort: "order" %}
+	{%- assign n = projects.size %}
+	{%- if n <= 1 %}{% assign cols = 1 %}{% elsif n == 2 %}{% assign cols = 2 %}{% elsif n == 3 %}{% assign cols = 3 %}{% elsif n == 4 %}{% assign cols = 2 %}{% else %}{% assign cols = 3 %}{% endif %}
+	<div class="project-list cols-{{ cols }}">
+		{%- for project in projects %}
+		{% include project-card.html project=project %}
+		{%- endfor %}
+	</div>
+</section>

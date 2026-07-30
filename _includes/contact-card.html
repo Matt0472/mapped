@@ -1,0 +1,7 @@
+<a class="pill contact-pill" href="{{ include.link.url }}"{% if include.link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>
+	<span class="pill-icon" style="-webkit-mask-image: url('{{ include.link.icon | relative_url }}'); mask-image: url('{{ include.link.icon | relative_url }}')" aria-hidden="true"></span>
+	<span class="pill-text">
+		<span class="pill-name">{{ include.link.name }}</span>
+		<span class="pill-handle">{{ include.link.handle }}</span>
+	</span>
+</a>

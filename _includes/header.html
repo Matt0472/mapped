@@ -1,0 +1,7 @@
+<header class="section container site-header site-header--{{ include.size | default: 'large' }}">
+	{%- comment %}Wordmark: MAPED (MAttia PEDone) + an extra P → "MAPPED". The pivot P is accented.{% endcomment %}
+	<a href="{{ '/' | relative_url }}" class="site-title" aria-label="{{ site.title }}">MA<span class="wm-pivot">P</span>PED</a>
+	{%- if page.home %}
+	<p class="site-subtitle">{{ site.author.tagline }}</p>
+	{%- endif %}
+</header>

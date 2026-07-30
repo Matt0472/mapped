@@ -1,0 +1,31 @@
+{%- assign p = include.project -%}
+{%- assign host = p.external_url | default: p.url | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' | first -%}
+<article class="pcard" style="--brand: {{ p.brand_color | default: 'var(--color-primary)' }};">
+	<div class="pcard-bar">
+		<span class="pcard-dot" style="background:#ff5f56"></span>
+		<span class="pcard-dot" style="background:#ffbd2e"></span>
+		<span class="pcard-dot" style="background:#27c93f"></span>
+		<span class="pcard-addr">{{ host }}</span>
+	</div>
+	<a class="pcard-view{% unless p.screenshot %} pcard-view--brand{% endunless %}" href="{{ p.url }}" aria-label="{{ p.title }}"
+		{%- if p.screenshot %} style="background-image: url('{{ p.screenshot | relative_url }}')"
+		{%- elsif p.banner %} style="background-image: linear-gradient(135deg, color-mix(in srgb, var(--brand) 85%, transparent), color-mix(in srgb, var(--brand) 60%, transparent)), url('{{ p.banner }}')"{%- endif %}>
+		{%- unless p.screenshot %}{% if p.logo %}<img class="pcard-logo" src="{{ p.logo }}" alt="{{ p.title }}" decoding="async">{% endif %}{% endunless %}
+		{%- if p.badge %}<span class="pcard-badge">{{ p.badge }}</span>{% elsif p.status == 'planned' %}<span class="pcard-badge">coming soon</span>{% endif %}
+	</a>
+	<div class="pcard-body">
+		<h3 class="pcard-title"><a href="{{ p.url }}">{{ p.title }}</a></h3>
+		<p class="pcard-descr">{{ p.description }}</p>
+		{%- if p.collaborator_name %}
+		<p class="pcard-collab">in collaboration with <a href="{{ p.collaborator_url }}" target="_blank" rel="noopener">{{ p.collaborator_name }} &uarr;</a></p>
+		{%- endif %}
+		<div class="pcard-foot">
+			<span class="pcard-meta">{{ p.category }} &middot; {{ p.status }}</span>
+			{%- if p.external_url and p.status != 'planned' %}
+			<a class="pcard-cta" href="{{ p.external_url }}" target="_blank" rel="noopener">Visit site &uarr;</a>
+			{%- else %}
+			<a class="pcard-cta" href="{{ p.url }}">View project &rarr;</a>
+			{%- endif %}
+		</div>
+	</div>
+</article>

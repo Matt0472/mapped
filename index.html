@@ -1,0 +1,35 @@
+---
+layout: default
+home: true
+---
+<section>
+	<div class="intro content">
+		{%- capture intro -%}{%- include intro.md -%}{%- endcapture -%}
+		{{ intro | markdownify }}
+	</div>
+</section>
+
+<section>
+	{% include skills-terminal.html %}
+</section>
+
+{%- comment %}Order explicitly via the `order` front-matter field (lower first).
+Home shows up to 6 featured projects. Column count avoids an orphan last card:
+2→2, 3→3, 4→2 (2+2), 5→3 (3+2), 6→3 (3+3). Beyond that, the "View all" button.{% endcomment %}
+{%- assign ordered = site.projects | sort: "order" %}
+{%- assign featured_all = ordered | where: "featured", true %}
+{%- if featured_all.size > 6 %}{% assign n = 6 %}{% else %}{% assign n = featured_all.size %}{% endif %}
+{%- if n <= 1 %}{% assign cols = 1 %}{% elsif n == 2 %}{% assign cols = 2 %}{% elsif n == 3 %}{% assign cols = 3 %}{% elsif n == 4 %}{% assign cols = 2 %}{% else %}{% assign cols = 3 %}{% endif %}
+{%- if n > 0 %}
+<section>
+	<h2 class="title">Projects</h2>
+	<div class="project-list cols-{{ cols }}">
+		{%- for project in featured_all limit: 6 %}
+		{% include project-card.html project=project %}
+		{%- endfor %}
+	</div>
+	{%- if site.projects.size > n %}
+	<p class="projects-viewall"><a href="{{ '/projects' | relative_url }}">View all projects →</a></p>
+	{%- endif %}
+</section>
+{%- endif %}

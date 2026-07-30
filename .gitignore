@@ -1,0 +1,12 @@
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Local Ruby / Bundler (gems are vendored only for the local Docker preview)
+.bundle/
+vendor/
+Gemfile.lock
+
+# Local overrides
+*.local.*
