@@ -1,7 +1,8 @@
 # Site (Mattia Pedone)
 title: "MAPPED"   # wordmark: MAPED (MAttia PEDone) + una P → "MAPPED"
 description: "Hi, my name is Mattia Pedone. I'm a Full-Stack web developer and this is my personal website!"
-url: "https://matt0472.github.io"                         # TODO: dominio custom (da configurare alla fine)
+url: "https://mapped-dev.it"           # custom domain
+baseurl: ""                            # served from the domain root
 lang: en
 logo: "/assets/images/favicon.svg"
 author:
