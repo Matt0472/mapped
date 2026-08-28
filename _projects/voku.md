@@ -6,7 +6,7 @@ show_title: false
 banner: "/assets/images/projects/voku-bg.svg"
 brand_color: "#8b5cf6"
 featured: true
-order: 3
+order: 4
 category: "collaborator"
 status: "planned"
 external_url: "https://github.com/voku-app"

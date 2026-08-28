@@ -29,6 +29,7 @@ layout: default
 			{% endif %}
 			{% if page.description %}<p class="project-hero-descr">{{ page.description }}</p>{% endif %}
 			{% if page.collaborator_name %}<p class="pcard-collab">in collaboration with <a href="{{ page.collaborator_url }}" target="_blank" rel="noopener">{{ page.collaborator_name }} &uarr;</a></p>{% endif %}
+			{% if page.client_name %}<p class="pcard-collab">for <a href="{{ page.client_url }}" target="_blank" rel="noopener">{{ page.client_name }} &uarr;</a></p>{% endif %}
 			<div class="project-hero-actions">
 				{% if page.external_url %}<a class="pill is-brand" href="{{ page.external_url }}" target="_blank" rel="noopener">Visit site ↗</a>{% endif %}
 				{% if page.repo_url %}<a class="pill is-ghost" href="{{ page.repo_url }}" target="_blank" rel="noopener">Source ↗</a>{% endif %}

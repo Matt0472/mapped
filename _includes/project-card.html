@@ -19,6 +19,9 @@
 		{%- if p.collaborator_name %}
 		<p class="pcard-collab">in collaboration with <a href="{{ p.collaborator_url }}" target="_blank" rel="noopener">{{ p.collaborator_name }} &uarr;</a></p>
 		{%- endif %}
+		{%- if p.client_name %}
+		<p class="pcard-collab">for <a href="{{ p.client_url }}" target="_blank" rel="noopener">{{ p.client_name }} &uarr;</a></p>
+		{%- endif %}
 		<div class="pcard-foot">
 			<span class="pcard-meta">{{ p.category }} &middot; {{ p.status }}</span>
 			{%- if p.external_url and p.status != 'planned' %}

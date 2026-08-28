@@ -4,7 +4,7 @@ description: "A brand-new website for Agenxia, a Milan-based wine representation
 screenshot: "/assets/images/projects/agenxia-screenshot.webp"
 brand_color: "#8b1e2f"
 featured: true
-order: 2
+order: 3
 category: "client work"
 status: "in progress"
 badge: "work in progress"

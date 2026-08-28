@@ -6,7 +6,7 @@ banner: "/assets/images/projects/lorena-brambilla-bg.svg"
 screenshot: "/assets/images/projects/lorena-brambilla-screenshot.webp"
 brand_color: "#c98a7a"
 featured: true
-order: 1
+order: 2
 category: "client work"
 status: "active"
 external_url: "https://lorenabrambillafotografia.com/"
